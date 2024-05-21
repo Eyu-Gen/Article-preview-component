@@ -1,0 +1,204 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --veryDarkColor: hsl(217, 19%, 35%);
+    --darkColor: hsl(214, 16%, 45%);
+    --lightColor: hsl(210, 11%, 55%);
+    --lightTransparentColor: hsl(212, 35%, 80%);
+    --veryLightColor:  hsl(210, 46%, 95%);
+    --primaryFont: Manrope;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--lightColor);
+}
+
+.imageSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+main{
+    display: flex;
+    width: 50%;
+    background-color: var(--veryLightColor);
+    border-radius: 10px;
+    font-family: var(--primaryFont);
+}
+
+.leftSection{
+    width: 40%;
+    border-radius: 10px 0 0 0;
+    overflow: hidden;
+    
+    .imageSection{
+        height: 100%;
+    }
+}
+
+.rightSection{
+    padding: 20px 30px;
+    position: relative;
+    width: 60%;
+
+    .mainHeading{
+        font-size: 23px;
+        line-height: 30px;
+        font-weight: 700;
+        color: var(--darkColor);
+        margin-bottom: 15px;
+    }
+
+    .descriptionPara,
+    .postedDate{
+        color: var(--lightColor);
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .authorBlock{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        .authorDetailsWrapper{
+            display: flex;
+            align-items: center;
+
+            .imageSection{
+                width: 50px;
+                aspect-ratio: 1/1;
+                margin-right: 10px;
+                
+                .authorProfile{
+                    border-radius: 50%;
+                }
+            }
+
+            .authorDetails{
+                .authorName{
+                    font-weight: 700;
+                    color: var(--darkColor);
+                }
+    
+                .postedDate{
+                    margin-top: 5px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .shareSection{
+            width: 30px;
+            padding: 8px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: var(--lightTransparentColor);
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+    .shareBlock{
+        position: absolute;
+        bottom: 90px;
+        right: -60px;
+        background-color: var(--veryDarkColor);
+        border-radius: 5px;
+        box-shadow: 0px 1px 5px var(--veryDarkColor);
+        display: none;
+        justify-content: center;
+        padding: 15px 30px;
+
+        .share{
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 14px;
+            color: var(--lightTransparentColor);
+        }
+
+        .shareButtons{
+            display: flex;
+            align-items: center;
+            z-index: 1;
+
+            a{
+                cursor: pointer;
+                margin-left: 15px;
+    
+                .imageSection{
+                    width: 20px;
+                }
+            }
+        }
+
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: -10px; 
+            left: 50%;
+            transform: rotate(45deg);
+            width: 30px; 
+            height: 30px; 
+            background-color: var(--veryDarkColor); 
+        }
+    }
+}
+
+@media (max-width: 950px)
+{
+    main{
+        flex-direction: column;
+
+        .leftSection,
+        .rightSection{
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+    }
+
+    .rightSection{      
+        .shareSection{
+            z-index: 1;
+        }  
+
+        .shareBlock{
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 85px;
+            border-radius: 0 0 10px 10px;
+            align-items: center;
+            justify-content: left;
+    
+            &::after{
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 550px){
+    main{
+        width: 90%;
+    }
+}
